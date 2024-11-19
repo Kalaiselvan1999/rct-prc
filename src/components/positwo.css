@@ -1,0 +1,12 @@
+.home {
+  height: 200vh;
+  background-color: bisque;
+  position: relative;
+  top: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+  .home {
+    display: grid;
+  }
+}
