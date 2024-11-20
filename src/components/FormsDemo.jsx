@@ -2,10 +2,17 @@ import React, { useState } from "react";
 
 function FormsDemo() {
   const [language, chooseLanguage] = useState("");
-  console.log(language);
+  const [cars, setCars] = useState([]);
+  console.log(cars);
 
   const handleClick = (event) => {
     chooseLanguage(event.target.value);
+  };
+
+  const handleSelectCar = (event) => {
+    if (!cars.includes(event.target.value)) {
+      setCars([...cars, event.target.value]);
+    }
   };
 
   return (
@@ -13,49 +20,63 @@ function FormsDemo() {
       <h1 className="display-3">Welcome to Forms</h1>
       <hr />
       <form>
-        <h6 className="display-6">Text and Password</h6>
-        <div>
-          <label htmlFor="userName">Username</label>
-          <input type="text" placeholder="johndoe" autoFocus />
-        </div>
-        <div>
-          <label htmlFor="passWord">Password</label>
-          <input type="password" />
-        </div>
+        {/* Text input */}
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={(e) => console.log(e.target.value)}
+        />
+
+        {/* Radio buttons */}
+        <h6 className="display-6">Choose a language:</h6>
+        <label>
+          <input
+            type="radio"
+            name="language"
+            value="HTML"
+            checked={language === "HTML"}
+            onChange={handleClick}
+          />{" "}
+          HTML
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="language"
+            value="CSS"
+            checked={language === "CSS"}
+            onChange={handleClick}
+          />{" "}
+          CSS
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="language"
+            value="JavaScript"
+            checked={language === "JavaScript"}
+            onChange={handleClick}
+          />{" "}
+          JavaScript
+        </label>
+
+        {/* Multiple select */}
+        <h6 className="display-6">Choose cars:</h6>
+        <select
+          id="cars"
+          name="cars"
+          size="3"
+          multiple
+          onChange={handleSelectCar}
+        >
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>
+          <option value="audi">Audi</option>
+        </select>
       </form>
-      <hr />
-      {/* radio button */}
-      <h6 className="display-6">Radio</h6>
-      {/* HTML */}
-      <input
-        type="radio"
-        id="html"
-        name="fav_language"
-        value="HTML"
-        onChange={handleClick}
-      />
-      <label htmlFor="html">HTML</label>
-      <br />
-      {/* CSS */}
-      <input
-        type="radio"
-        id="css"
-        name="fav_language"
-        value="CSS"
-        onChange={handleClick}
-      />
-      <label htmlFor="css">CSS</label>
-      <br />
-      {/* JAVASCRIPT */}
-      <input
-        type="radio"
-        id="javascript"
-        name="fav_language"
-        value="JavaScript"
-        onChange={handleClick}
-      />
-      <label htmlFor="javascript">JavaScript</label>
-      <br />
     </div>
   );
 }
