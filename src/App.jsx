@@ -1,21 +1,24 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// components
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PositionDemo from "./components/PositionDemo";
-import PositionDemoTwo from "./components/PositionDemoTwo";
+import FormsDemo from "./components/FormsDemo";
+import GridDemo from "./components/GridDemo";
 
 function App() {
   return (
     <>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/forms" element={<FormsDemo />} />
+          <Route path="/grid" element={<GridDemo />} />
         </Routes>
-      </BrowserRouter> */}
-      <PositionDemo />
-      <PositionDemoTwo />
+      </BrowserRouter>
     </>
   );
 }

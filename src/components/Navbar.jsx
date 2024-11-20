@@ -1,46 +1,44 @@
 import React from "react";
-import "./navbar.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 function Navbar() {
-  const [isActive, setIsActive] = useState(false);
-  console.log(isActive);
+  const activeLink = "nav-link border border-primary-subtle bg-primary-subtle rounded-3 text-primary-emphasis";
 
   return (
-    <>
-      <div className="container">
-        <div className="navbar">Logo</div>
-        <div className="menu-icon"
-          onClick={(handleClick) => {
-            setIsActive(!isActive && true);
-          }}
-        >
-          Hamburger
-        </div>
-        <div className={`navbar-elements ${isActive && 'active'}`}>
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink to="/blogs">Blogs</NavLink>
-              </li>
-              <li>
-                <NavLink to="/projects">Projects</NavLink>
-              </li>
-              <li>
-                <NavLink to="/about">About</NavLink>
-              </li>
-              <li>
-                <NavLink to="/contact">Contact</NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </>
+    <div>
+      <ul className="nav justify-content-center">
+        <li className="nav-item">
+          <NavLink
+            to="/"
+            className={({ isActive }) => 
+              isActive ? activeLink : "nav-link"
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/forms"
+            className={({ isActive }) => 
+              isActive ? activeLink : "nav-link"
+            }
+          >
+            Forms
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            to="/grid"
+            className={({ isActive }) => 
+              isActive ? activeLink : "nav-link"
+            }
+          >
+            Grid
+          </NavLink>
+        </li>
+      </ul>
+    </div>
   );
 }
 
