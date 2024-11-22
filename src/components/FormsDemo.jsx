@@ -70,6 +70,7 @@ function FormsDemo() {
           size="3"
           multiple
           onChange={handleSelectCar}
+          className="container"
         >
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
